@@ -1,0 +1,25 @@
+{
+  "name": "alumni",
+  "main": "index.html",
+  "homepage": "https://github.com/VRuechardt/Alumni",
+  "description": "An alumni networking website",
+  "moduleType": [],
+  "authors": [
+    "Valentin Ruechardt",
+    "Christian Brachert"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.7",
+    "angular": "~1.4.7",
+    "Materialize": "materialize#~0.97.2"
+  }
+}
