@@ -4,7 +4,7 @@ module.exports = ['$scope', '$http', '$rootScope', function($scope, $http, $root
 
     console.log("controller started");
 
-    $http.get("http://localhost:5000/")
+    $http.get("/api/")
         .then(function(response) {
             console.log(response);
         });
