@@ -1,0 +1,20 @@
+
+body {
+  background: white;
+  color: #333;
+}
+
+.primary {
+  background: $primary-color;
+}
+
+.primary-text {
+  color: $primary-color;
+}
+
+.secondary {
+  background: $secondary-color;
+}
+.secondary-text {
+  color: $secondary-color;
+}
