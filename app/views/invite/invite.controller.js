@@ -21,7 +21,7 @@ module.exports = ['$scope', '$http', '$rootScope', function($scope, $http, $root
     };
 
     $scope.invite = function() {
-        $http.put("/api/user", {email: $scope.users[0].email})
+        $http.post("/api/user", {email: $scope.users[0].email})
             .then(function(response) {
                 console.log(response);
             });

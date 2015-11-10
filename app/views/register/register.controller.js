@@ -11,6 +11,7 @@ module.exports = ['$scope', '$http', '$rootScope', '$routeParams', function($sco
     };
 
     $scope.register = function() {
+        console.log()
         if($scope.user.firstname && $scope.user.lastname && $scope.user.password) {
             $http.post("/api/user", {firstname: $scope.user.firstname, lastname: $scope.user.lastname, password: $scope.user.password, code: $routeParams.code})
                 .then(function(response) {
