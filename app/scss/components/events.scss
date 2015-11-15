@@ -11,15 +11,76 @@
     float: none;
     white-space: normal;
 
-    .event--title-container {
-      white-space: nowrap;
-      max-width: calc(100% - 80px);
-    }
-
-    .event--date {
-      padding: 16px 0 0 0;
-    }
-
   }
 
+}
+
+.event--title-container {
+  white-space: nowrap;
+  max-width: calc(100% - 80px);
+}
+
+.event--date {
+  padding: 16px 0 0 0;
+}
+
+.modal.bottom-sheet {
+  max-height: 90%;
+}
+
+.time-date-picker-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index:1010;
+}
+.time-date-picker {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -322px;
+  margin-top: -191px;
+  background-color: white;
+  z-index:1011;
+}
+@media screen and (max-width: 51rem) {
+  .time-date-picker {
+    margin-top: -302px;
+    margin-left: -161px;
+  }
+  .time-date.full-mode > .control {
+    height: 39.2rem !important;
+  }
+}
+
+.btn.btn-link {
+  background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
+}
+.slider {
+  height: auto !important;
+}
+.buttons {
+  .btn {
+    padding: 0 10px !important;
+  }
+}
+.time-date > .control > .slider > .time-control > .time-inputs > input {
+  height: 7rem;
+}
+.time-date > .control > .full-title {
+  background-color: $primary-color !important;
+}
+.time-date.full-mode > .buttons {
+  background-color: $primary-color !important;
+}
+.time-date > .control > .slider > .date-control > .days .day-cell.selected {
+  background-color: $primary-color !important;
+  color: white !important;
+}
+.time-date button, .time-date .button {
+  color: $primary-color !important;
 }

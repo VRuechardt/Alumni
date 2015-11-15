@@ -1,5 +1,5 @@
 
-<a class="btn-floating btn-large waves-effect waves-light primary-floating-action"><i class="material-icons">add</i></a>
+<a class="btn-floating btn-large waves-effect waves-light primary-floating-action" ng-click="createEvent()"><i class="material-icons">add</i></a>
 
 <div class="row events--list">
 
@@ -25,3 +25,34 @@
 </div>
 
 <event-directive></event-directive>
+
+<div id="createEvent" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>Create Event</h4>
+        <p>After entering general information you will be able to invite people.</p>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="event_name" ng-model="newEvent.name" type="text">
+                <label for="event_name">Event Name</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="event_description" ng-model="newEvent.description" class="materialize-textarea"></textarea>
+                <label for="event_description">Description</label>
+            </div>
+            <div class="input-field col s6">
+                <b>Starts</b>
+                <input placeholder="Start date" type="text" ng-click="startDateTime('start')" ng-model="newEvent.startdate">
+            </div>
+            <div class="input-field col s6">
+                <b>Ends</b>
+                <input placeholder="End date" type="text" ng-click="startDateTime('end')" ng-model="newEvent.enddate">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action waves-effect waves-green btn-flat" ng-click="saveEvent()">Create</a>
+    </div>
+</div>
+
+<div class="time-date-picker-overlay" ng-show="pickingDate" ng-click="cancelDateTime()"></div>
+<time-date-picker on-cancel="cancelDateTime()" on-save="saveDateTime()" class="z-depth-4 time-date-picker" ng-model="currentDate" display-twentyfour="true" display-mode="full" theme="bootstrap"  ng-show="pickingDate"></time-date-picker>

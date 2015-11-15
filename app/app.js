@@ -19,7 +19,8 @@ angular.module('alumni', [
         'alumni.internal',
         'alumni.header',
         'alumni.events',
-        'alumni.event'
+        'alumni.event',
+        'scDateTime'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
