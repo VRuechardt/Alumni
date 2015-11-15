@@ -17,7 +17,9 @@ module.exports = ['$scope', 'api', 'account', '$location', function($scope, api,
 
     account.checkLogin(function(loggedIn) {
         $scope.loggedIn = loggedIn;
-    })
+    });
+
+    $(".button-collapse").sideNav();
 
 
 }];

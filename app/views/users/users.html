@@ -1,0 +1,16 @@
+
+<div class="container">
+    <div class="row users--container">
+        <div class="col s12 l6" ng-repeat="user in users">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title black-text">{{user.firstname}} {{user.lastname}}</span>
+                </div>
+                <div class="card-action">
+                    <a href="#/user/{{user.id}}" class="right">View Profile</a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,8 @@ require('./views/internal');
 require('./views/header');
 require('./views/events');
 require('./views/event');
+require('./views/users');
+require('./views/user');
 
 angular.module('alumni', [
         'ngRoute',
@@ -20,6 +22,8 @@ angular.module('alumni', [
         'alumni.header',
         'alumni.events',
         'alumni.event',
+        'alumni.users',
+        'alumni.user',
         'scDateTime'
     ])
     .config(['$routeProvider', function($routeProvider) {

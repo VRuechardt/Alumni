@@ -1,0 +1,33 @@
+
+.users--container {
+  margin: 30px 0;
+
+
+
+}
+
+.users--upload-profilepic {
+  height: 200px;
+  border: 3px dashed #ddd;
+  cursor: pointer;
+  color: #555;
+  text-align: center;
+  position: relative;
+  p {
+    padding: 80px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  img {
+    visibility: hidden;
+    max-width: 100%;
+    max-height: 200px;
+  }
+  img.loaded {
+    visibility: visible;
+  }
+}
+input[type=file].uploadButton {
+  visibility: hidden;
+}
