@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', 'api', function($scope, api, $rootScope, $routeParams) {
+module.exports = ['$scope', 'api', 'account', function($scope, api, account) {
 
     $scope.logout = function() {
         console.log("logging out")
@@ -12,6 +12,9 @@ module.exports = ['$scope', 'api', function($scope, api, $rootScope, $routeParam
             });
     };
 
+    account.checkLogin(function(loggedIn) {
+        console.log("user login status: ", loggedIn);
+    })
 
 
 }];

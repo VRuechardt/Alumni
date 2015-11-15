@@ -36,7 +36,7 @@ module.exports = ['$http', '$location', function($http, $location) {
                     if(response.data.unauthorized) {
                         $location.url('/');
                     } else {
-                        promise.success();
+                        promise.success(response);
                     }
                 }, promise.error);
             return promise;
@@ -55,7 +55,7 @@ module.exports = ['$http', '$location', function($http, $location) {
                     if(response.data.unauthorized) {
                         $location.url('/');
                     } else {
-                        promise.success();
+                        promise.success(response);
                     }
                 }, promise.error);
             return promise;

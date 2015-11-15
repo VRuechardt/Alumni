@@ -20,4 +20,5 @@ angular.module('alumni', [
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
     }])
-    .factory('api', require('./services/api'));
+    .factory('api', require('./services/api'))
+    .factory('account', require('./services/account'));
