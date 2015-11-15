@@ -1,2 +1,27 @@
 
-This is the events list
+<a class="btn-floating btn-large waves-effect waves-light primary-floating-action"><i class="material-icons">add</i></a>
+
+<div class="row events--list">
+
+    <div class="col events--col s10 m5 l3" ng-repeat="event in events">
+        <div class="card">
+            <div class="card-content">
+                <div class="event--title-container left">
+                    <span class="truncate card-title black-text">{{event.name}}</span>
+                </div>
+                <span class="right grey-text event--date">{{event.startdate}}</span>
+                <div class="clear"></div>
+                <p>
+                    {{event.description}}
+                </p>
+            </div>
+            <div class="card-action">
+                <a class="right" ng-click="details(event)">More</a>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<event-directive></event-directive>

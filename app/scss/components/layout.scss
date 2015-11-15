@@ -30,3 +30,17 @@ body {
 a {
   cursor: pointer;
 }
+
+.primary-floating-action {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+}
+@media screen and (max-width: $small-screen) {
+  .primary-floating-action {
+    position: fixed;
+    right: 30px;
+    top: auto;
+    bottom: 30px;
+  }
+}
