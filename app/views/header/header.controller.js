@@ -1,19 +1,22 @@
 'use strict';
 
-module.exports = ['$scope', 'api', 'account', function($scope, api, account) {
+module.exports = ['$scope', 'api', 'account', '$location', function($scope, api, account, $location) {
 
     $scope.logout = function() {
-        console.log("logging out")
         api.get("/api/logout", {})
             .then(function(response) {
-                console.log(response);
+                $location.url('/');
+                account.checkLogin();
             }, function(error) {
-                console.log(error);
+                $location.url('/');
+                account.checkLogin();
             });
     };
 
+    $scope.loggedIn = false;
+
     account.checkLogin(function(loggedIn) {
-        console.log("user login status: ", loggedIn);
+        $scope.loggedIn = loggedIn;
     })
 
 

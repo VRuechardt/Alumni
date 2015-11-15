@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', 'api', '$rootScope', '$location', '$http', function($scope, api, $rootScope, $location, $http) {
-
-    console.log($http);
+module.exports = ['$scope', 'api', '$location', 'account', function($scope, api, $location, account) {
 
     $scope.user = {
         email: "",
@@ -13,8 +11,8 @@ module.exports = ['$scope', 'api', '$rootScope', '$location', '$http', function(
     $scope.login = function() {
         api.post("/api/login", {email: $scope.user.email, password: $scope.user.password})
             .then(function(response) {
-                console.log(response);
-                $location.url('/internal')
+                account.checkLogin();
+                $location.url('/internal');
             }, function(error) {
                 $scope.loginError = true;
             });
