@@ -1,21 +1,24 @@
 'use strict';
 
-module.exports = ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+module.exports = ['$scope', 'api', '$rootScope', '$location', '$http', function($scope, api, $rootScope, $location, $http) {
 
-    console.log("controller started");
+    console.log($http);
 
     $scope.user = {
         email: "",
         password: ""
     };
+    $scope.loginError = false;
 
     $scope.login = function() {
-        $http.post("/api/login", {email: $scope.user.email, password: $scope.user.password})
+        api.post("/api/login", {email: $scope.user.email, password: $scope.user.password})
             .then(function(response) {
                 console.log(response);
+                $location.url('/internal')
+            }, function(error) {
+                $scope.loginError = true;
             });
     };
-
 
 
 }];

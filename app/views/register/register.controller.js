@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', '$http', '$rootScope', '$routeParams', function($scope, $http, $rootScope, $routeParams) {
-
-    console.log("controller started");
+module.exports = ['$scope', 'api', '$rootScope', '$routeParams', function($scope, api, $rootScope, $routeParams) {
 
     $scope.user = {
         firstname: "",
@@ -11,9 +9,8 @@ module.exports = ['$scope', '$http', '$rootScope', '$routeParams', function($sco
     };
 
     $scope.register = function() {
-        console.log()
         if($scope.user.firstname && $scope.user.lastname && $scope.user.password) {
-            $http.post("/api/user", {firstname: $scope.user.firstname, lastname: $scope.user.lastname, password: $scope.user.password, code: $routeParams.code})
+            api.put("/api/user", {firstname: $scope.user.firstname, lastname: $scope.user.lastname, password: $scope.user.password, code: $routeParams.code})
                 .then(function(response) {
                     console.log(response);
                 });

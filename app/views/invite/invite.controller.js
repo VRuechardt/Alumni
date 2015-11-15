@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+module.exports = ['$scope', 'api', '$rootScope', function($scope, api, $rootScope) {
 
     $scope.users = [
         {
@@ -21,7 +21,7 @@ module.exports = ['$scope', '$http', '$rootScope', function($scope, $http, $root
     };
 
     $scope.invite = function() {
-        $http.post("/api/user", {email: $scope.users[0].email})
+        api.post("/api/user", {email: $scope.users[0].email})
             .then(function(response) {
                 console.log(response);
             });

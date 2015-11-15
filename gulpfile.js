@@ -37,6 +37,6 @@ gulp.task('scripts', function() {
 gulp.task('watch', function() {
     gulp.run('default');
     var scssWatcher = gulp.watch('./app/scss/**/*.scss', ['styles']);
-    var jsWatcher = gulp.watch(['./app/app.js', './app/views/**/*.js', './app/shared/**/*.js'], ['scripts']);
+    var jsWatcher = gulp.watch(['./app/app.js', './app/views/**/*.js', './app/services/**/*.js', './app/shared/**/*.js'], ['scripts']);
 });
 
