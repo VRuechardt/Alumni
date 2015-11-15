@@ -8,6 +8,7 @@ require('./views/register');
 require('./views/invite');
 require('./views/internal');
 require('./views/header');
+require('./views/events');
 
 angular.module('alumni', [
         'ngRoute',
@@ -15,7 +16,8 @@ angular.module('alumni', [
         'alumni.register',
         'alumni.invite',
         'alumni.internal',
-        'alumni.header'
+        'alumni.header',
+        'alumni.events'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
