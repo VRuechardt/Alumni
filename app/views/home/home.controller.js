@@ -30,7 +30,7 @@ module.exports = ['$scope', 'api', '$location', 'account', function($scope, api,
             console.log(e);
         }
         $scope.s = function(){
-            $scope.websocket.send(JSON.stringify({"task":"msg", "email":"christian.brachert@web.de","message":"it actually worked"}));
+            $scope.websocket.send(JSON.stringify({"task":"msg", "id":1,"message":"it actually worked"}));
         }
         console.log($scope.s);
     }

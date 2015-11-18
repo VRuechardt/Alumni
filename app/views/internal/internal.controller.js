@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+module.exports = ['$scope', 'api', '$rootScope', function($scope, api, $rootScope) {
 
 
 
