@@ -33,5 +33,5 @@ module.exports = ['$scope', 'api', '$location', 'account', function($scope, api,
             $scope.websocket.send(JSON.stringify({"task":"msg", "id":1,"message":"it actually worked"}));
         }
         console.log($scope.s);
-    }
+    };
 }];

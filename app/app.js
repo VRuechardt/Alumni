@@ -32,4 +32,5 @@ angular.module('alumni', [
         $routeProvider.otherwise({redirectTo: '/'});
     }])
     .factory('api', require('./services/api'))
-    .factory('account', require('./services/account'));
+    .factory('account', require('./services/account'))
+    .factory('chat', require('./services/chat'));

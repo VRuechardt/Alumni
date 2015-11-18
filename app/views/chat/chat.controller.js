@@ -1,13 +1,25 @@
 'use strict';
 
-module.exports = ['$scope', 'api', 'account', '$location', '$routeParams', '$sce', function($scope, api, account, $location, $routeParams, $sce) {
+module.exports = ['$scope', 'api', 'account', 'chat', function($scope, api, account, chat) {
 
     $scope.conversations = [];
     $scope.loggedIn = false;
 
+    $scope.recvMessage = function(message) {
+
+        console.log('new message: ');
+        console.log(message);
+
+    };
+
     account.checkLogin(function(loggedIn) {
         $scope.loggedIn = loggedIn;
-        $scope.loadConversations();
+        if(loggedIn) {
+            $scope.loadConversations();
+            console.log(account.me);
+            chat.connect(account.me.logincode);
+            chat.listen($scope.recvMessage);
+        }
     });
 
     $scope.loadConversations = function() {
@@ -56,6 +68,13 @@ module.exports = ['$scope', 'api', 'account', '$location', '$routeParams', '$sce
 
     $scope.sendMessage = function(conv) {
 
+        chat.send(conv.conversationID, conv.newMessage);
+        conv.messages.push({
+            content: conv.newMessage,
+            conversationID: conv.conversationID,
+            userID: account.me.id,
+            timestamp: new Date().getTime()
+        });
         conv.newMessage = '';
 
     };
