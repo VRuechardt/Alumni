@@ -19,7 +19,11 @@ module.exports = ['$http', '$location', function($http, $location) {
                     } else {
                         promise.success(response);
                     }
-                }, promise.error);
+                }, function(error) {
+                    if(promise.error) {
+                        promise.error(error);
+                    }
+                });
             return promise;
         },
         put: function(endpoint, data) {
@@ -38,7 +42,11 @@ module.exports = ['$http', '$location', function($http, $location) {
                     } else {
                         promise.success(response);
                     }
-                }, promise.error);
+                }, function(error) {
+                    if(promise.error) {
+                        promise.error(error);
+                    }
+                });
             return promise;
         },
         get: function(endpoint, data) {
@@ -57,7 +65,11 @@ module.exports = ['$http', '$location', function($http, $location) {
                     } else {
                         promise.success(response);
                     }
-                }, promise.error);
+                }, function(error) {
+                    if(promise.error) {
+                        promise.error(error);
+                    }
+                });
             return promise;
         }
     };

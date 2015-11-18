@@ -76,4 +76,33 @@ module.exports = ['$scope', 'api', '$http', 'account', '$routeParams', function(
         }
     };
 
+
+    $scope.editingUserData = false;
+    $scope.changedUser = {
+        firstname: '',
+        lastname: '',
+        doChangePassword: false,
+        password: '',
+        newpassword: ''
+    };
+    $scope.editUserData = function() {
+        if($scope.myself) {
+            $scope.changedUser.firstname = $scope.user.firstname;
+            $scope.changedUser.lastname = $scope.user.lastname;
+            $scope.editingUserData = true;
+        }
+    };
+
+    $scope.doEditUserData = function() {
+        if($scope.myself) {
+            api.put('/api/user/' + account.me.id, $scope.changedUser)
+                .then(function(response) {
+                    $scope.loadUser();
+                    Materialize.toast('Your profile war updated', 3000);
+                }, function(error) {
+                    Materialize.toast('Wrong password', 3000);
+                });
+        }
+    };
+
 }];
