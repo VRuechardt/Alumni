@@ -7,8 +7,14 @@ module.exports = ['$scope', 'api', 'account', 'chat', function($scope, api, acco
 
     $scope.recvMessage = function(message) {
 
-        console.log('new message: ');
-        console.log(message);
+        $scope.conversations.forEach(function(o, i) {
+            o.messages.push({
+                userID: -1,
+                content: message,
+                timestamp: new Date().getTime(),
+                conversationID: -1
+            });
+        });
 
     };
 

@@ -10,7 +10,6 @@ module.exports = ['$http', '$location', function($http, $location) {
 
             chatService.websocket = new WebSocket('ws:\\\\127.0.0.1:9001');
             chatService.websocket.onopen = function(){
-                console.log(authcode);
                 var send = {"task": 'auth', "code": authcode};
                 chatService.websocket.send(JSON.stringify(send));
             };
@@ -23,7 +22,10 @@ module.exports = ['$http', '$location', function($http, $location) {
 
         },
         send: function(conversationID, content) {
-            chatService.websocket.send(JSON.stringify({"task":"msg", "id":conversationID,"message":content}));
+            chatService.websocket.send(JSON.stringify({
+                "task":"msg",
+                "id":conversationID,
+                "message":content}));
         },
         callbacks: [],
         listen: function(callback) {
