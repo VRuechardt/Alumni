@@ -3,7 +3,7 @@
     <div class="row users--container">
         <div class="col s12 m4">
             <div class="users--upload-profilepic valign-wrapper" ng-click="uploadProfilePicture()">
-                <p ng-show="!imageLoaded">Upload picture</p>
+                <p ng-show="!imageLoaded && myself">Upload picture</p>
                 <img ng-src="{{previewSRC}}" alt="" class="valign" ng-class="{loaded: imageLoaded}">
             </div>
             <input class="uploadButton" id="uploadProfilePictureButton" type="file"/>
@@ -14,6 +14,41 @@
                     <span class="card-title black-text">
                         {{user.firstname}} {{user.lastname}}
                     </span>
+                    <i class="fa fa-pencil-square-o right primary-text fa-2x small-margin clickable" ng-show="myself" ng-click="editUserData()"></i>
+                </div>
+                <div class="card-content" ng-show="editingUserData">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="change_firstname" ng-model="changedUser.firstname">
+                            <label for="change_firstname" class="active">First name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="text" id="change_lastname" ng-model="changedUser.lastname">
+                            <label for="change_lastname" class="active">Last name</label>
+                        </div>
+                        <div class="col s12">
+                            <div class="switch">
+                                <label>
+                                    Don't change password
+                                    <input type="checkbox" ng-model="changedUser.doChangePassword">
+                                    <span class="lever"></span>
+                                    Change password
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-field col s12" ng-show="changedUser.doChangePassword">
+                            <input type="password" id="change_password" ng-model="changedUser.password">
+                            <label for="change_password">Old password</label>
+                        </div>
+                        <div class="input-field col s12" ng-show="changedUser.doChangePassword">
+                            <input type="password" id="change_newpassword" ng-model="changedUser.newpassword">
+                            <label for="change_newpassword">New password</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <div class="btn-flat right" ng-click="doEditUserData()">Save</div>
+                            <div class="btn-flat right" ng-click="closeEditUserData()">Close</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

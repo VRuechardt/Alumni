@@ -8,7 +8,6 @@ module.exports = ['$scope', 'api', 'account', '$location', function($scope, api,
         api.get('/api/users/', {})
             .then(function(response) {
                 $scope.users = response.data;
-                console.log($scope.users);
             }, function(error) {
                 console.log(error);
             });

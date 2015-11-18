@@ -11,16 +11,19 @@ module.exports = ['$http', '$location', function($http, $location) {
             });
         },
         loggedIn: false,
+        me: {},
+
         checkLogin: function(callback) {
             if(callback) {
                 accountService.callbacks.push(callback);
             }
             $http.get('/api/check_login', {})
                 .then(function(response) {
-                    if(response.data.authorized) {
-                        accountService.loggedIn = true;
-                    } else {
+                    if(response.data.unauthorized) {
                         accountService.loggedIn = false;
+                    } else {
+                        accountService.loggedIn = true;
+                        accountService.me = response.data;
                     }
                     accountService.notify();
 

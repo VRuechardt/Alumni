@@ -1,9 +1,13 @@
 'use strict';
 
-module.exports = ['$scope', 'api', 'account', '$location', function($scope, api, account, $location) {
+module.exports = ['$scope', 'api', 'account', '$location', '$sce', function($scope, api, account, $location, $sce) {
 
     $scope.formatDate = function(date) {
-        return date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ', ' + date.getHours() + ':' + date.getMinutes();
+        var minutes = "" + date.getMinutes();
+        if(minutes.length < 2) {
+            minutes = "0" + minutes;
+        }
+        return date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ', ' + date.getHours() + ':' + minutes;
     };
 
     var inOneHour = new Date();
@@ -28,6 +32,13 @@ module.exports = ['$scope', 'api', 'account', '$location', function($scope, api,
                     var date = new Date();
                     date.setTime(o.startdate);
                     o.startdate = date.getDate() + "." + (date.getMonth()+1) + "." + date.getFullYear();
+                    o.realdescription = o.description;
+                    o.shortdescription = function() {
+                        return $sce.trustAsHtml(this.realdescription.length > 100 ? (this.realdescription.substring(0, 100) + '...') : this.realdescription);
+                    };
+                    o.description = function() {
+                        return $sce.trustAsHtml(this.realdescription);
+                    };
                 });
                 if($scope.events.length > 0) {
                     $scope.$broadcast('eventChanged', $scope.events[0]);
