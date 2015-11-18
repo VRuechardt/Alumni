@@ -1,0 +1,71 @@
+
+.chat--container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+
+  .chat--button {
+    float: right;
+    width: 200px;
+    height: 30px;
+    @extend .z-depth-1;
+    background-color: #ddd;
+    margin: 0 0 0 10px;
+    color: black;
+    position: relative;
+
+    .chat--trigger {
+      cursor: pointer;
+      font-weight: bold;
+      padding: 5px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .chat--window {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 300px;
+      background-color: white;
+      border: 1px solid $primary-color;
+
+      .chat--messages {
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 30px;
+
+        .chat--message {
+
+          background-color: lighten($primary-color, 20%);
+          border-radius: 5px;
+          padding: 5px;
+          margin: 5px;
+
+          &.own {
+
+          }
+
+        }
+
+      }
+
+      input {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -15px;
+        height: 30px;
+        border: none;
+        border-top: 1px solid #ccc;
+      }
+
+    }
+
+  }
+
+}

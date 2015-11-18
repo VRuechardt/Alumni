@@ -12,6 +12,7 @@ require('./views/events');
 require('./views/event');
 require('./views/users');
 require('./views/user');
+require('./views/chat');
 
 angular.module('alumni', [
         'ngRoute',
@@ -24,6 +25,7 @@ angular.module('alumni', [
         'alumni.event',
         'alumni.users',
         'alumni.user',
+        'alumni.chat',
         'scDateTime'
     ])
     .config(['$routeProvider', function($routeProvider) {

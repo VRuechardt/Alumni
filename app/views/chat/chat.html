@@ -1,0 +1,19 @@
+
+<div class="chat--container">
+    <div class="chat--button" ng-repeat="conv in conversations">
+        <div class="chat--trigger" ng-click="openChat(conv)">
+            {{conv.conversation.topic}}
+        </div>
+        <div class="chat--window" ng-show="conv.visible">
+            <div class="chat--messages">
+                <div class="chat--message" ng-repeat="message in conv.messages">
+                    {{message.content}}
+                </div>
+            </div>
+            <form ng-submit="sendMessage(conv)">
+                <input type="text" placeholder="Your Message" ng-model="conv.newMessage">
+                <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+            </form>
+        </div>
+    </div>
+</div>

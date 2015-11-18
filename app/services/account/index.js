@@ -12,25 +12,31 @@ module.exports = ['$http', '$location', function($http, $location) {
         },
         loggedIn: false,
         me: {},
+        loading: false,
 
         checkLogin: function(callback) {
             if(callback) {
                 accountService.callbacks.push(callback);
             }
-            $http.get('/api/check_login', {})
-                .then(function(response) {
-                    if(response.data.unauthorized) {
+            if(!accountService.loading) {
+                accountService.loading = true;
+                $http.get('/api/check_login', {})
+                    .then(function(response) {
+                        if(response.data.unauthorized) {
+                            accountService.loggedIn = false;
+                        } else {
+                            accountService.loggedIn = true;
+                            accountService.me = response.data;
+                        }
+                        accountService.notify();
+                        accountService.loading = false;
+                    }, function(error) {
                         accountService.loggedIn = false;
-                    } else {
-                        accountService.loggedIn = true;
-                        accountService.me = response.data;
-                    }
-                    accountService.notify();
+                        accountService.notify();
+                        accountService.loading = false;
+                    })
+            }
 
-                }, function(error) {
-                    accountService.loggedIn = false;
-                    accountService.notify();
-                })
         }
 
     };

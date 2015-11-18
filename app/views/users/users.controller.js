@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', 'api', 'account', '$location', function($scope, api, account, $location) {
+module.exports = ['$scope', 'api', '$rootScope', function($scope, api, $rootScope) {
 
     $scope.users = [];
 
@@ -13,5 +13,9 @@ module.exports = ['$scope', 'api', 'account', '$location', function($scope, api,
             });
     };
     $scope.loadUsers();
+
+    $scope.chatTo = function(email) {
+        $rootScope.$broadcast('newchat', email);
+    };
 
 }];
