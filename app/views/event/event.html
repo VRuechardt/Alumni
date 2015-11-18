@@ -9,8 +9,7 @@
                     </div>
                     <span class="right grey-text event--date">{{event.startdate}}</span>
                     <div class="clear"></div>
-                    <p>
-                        {{event.description}}
+                    <p ng-bind-html="event.description()">
                     </p>
                 </div>
             </div>

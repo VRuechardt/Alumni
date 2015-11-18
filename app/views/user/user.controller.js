@@ -92,13 +92,16 @@ module.exports = ['$scope', 'api', '$http', 'account', '$routeParams', function(
             $scope.editingUserData = true;
         }
     };
+    $scope.closeEditUserData = function() {
+        $scope.editingUserData = false;
+    };
 
     $scope.doEditUserData = function() {
         if($scope.myself) {
             api.put('/api/user/' + account.me.id, $scope.changedUser)
                 .then(function(response) {
                     $scope.loadUser();
-                    Materialize.toast('Your profile war updated', 3000);
+                    Materialize.toast('Your profile was updated', 3000);
                 }, function(error) {
                     Materialize.toast('Wrong password', 3000);
                 });
