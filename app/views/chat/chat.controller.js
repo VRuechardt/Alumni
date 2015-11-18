@@ -7,7 +7,7 @@ module.exports = ['$scope', 'api', 'account', 'chat', function($scope, api, acco
 
     $scope.recvMessage = function(message) {
 
-        console.log(message);
+        message.data = JSON.parse(message.data);
 
         $scope.conversations.forEach(function(o, i) {
             if(o.conversation_id*1 === message.data.conversation_id) {
