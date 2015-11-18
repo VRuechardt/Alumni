@@ -3,7 +3,7 @@
     <div class="row users--container">
         <div class="col s12 m4">
             <div class="users--upload-profilepic valign-wrapper" ng-click="uploadProfilePicture()">
-                <p ng-show="!imageLoaded">Upload picture</p>
+                <p ng-show="!imageLoaded && myself">Upload picture</p>
                 <img ng-src="{{previewSRC}}" alt="" class="valign" ng-class="{loaded: imageLoaded}">
             </div>
             <input class="uploadButton" id="uploadProfilePictureButton" type="file"/>

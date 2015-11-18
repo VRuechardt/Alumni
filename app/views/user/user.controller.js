@@ -8,6 +8,8 @@ module.exports = ['$scope', 'api', '$http', 'account', '$routeParams', function(
     $scope.imageLoaded = false;
     $scope.previewSRC = '';
 
+    $scope.myself = false;
+
     $scope.loadUser = function() {
         api.get('/api/user/' + $routeParams.user_id, {})
             .then(function(response) {
@@ -19,6 +21,11 @@ module.exports = ['$scope', 'api', '$http', 'account', '$routeParams', function(
                     $scope.$apply();
                 };
                 profileImage.src = '/profile_pictures/' + $scope.user.id + '.png';
+
+                if(account.me.id == $scope.user.id) {
+                    $scope.myself = true;
+                }
+
             }, function(error) {
 
             });
@@ -28,7 +35,9 @@ module.exports = ['$scope', 'api', '$http', 'account', '$routeParams', function(
     }
 
     $scope.uploadProfilePicture = function() {
-        $('#uploadProfilePictureButton').click();
+        if($scope.myself) {
+            $('#uploadProfilePictureButton').click();
+        }
     };
 
     $scope.previewPicture = function() {
@@ -50,18 +59,21 @@ module.exports = ['$scope', 'api', '$http', 'account', '$routeParams', function(
     $('#uploadProfilePictureButton').on('change', $scope.previewPicture);
 
     $scope.uploadPicture = function(file) {
-        var form = new FormData();
-        form.append('picture', file);
-        $http.post('/api/upload_profile_picture', form, {
-                transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
-            })
-            .success(function(){
-                Materialize.toast('Your picture was uploaded.');
-            })
-            .error(function(){
-                Materialize.toast('Only png, jpg and gif allowed');
-            });
+        if($scope.myself) {
+            var form = new FormData();
+            form.append('picture', file);
+            $http.post('/api/upload_profile_picture', form, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                })
+                .success(function(response){
+                    console.log(response);
+                    Materialize.toast('Your picture was uploaded.', 3000);
+                })
+                .error(function(){
+                    Materialize.toast('Only png, jpg and gif allowed', 3000);
+                });
+        }
     };
 
 }];
