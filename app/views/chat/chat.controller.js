@@ -10,12 +10,9 @@ module.exports = ['$scope', 'api', 'account', 'chat', function($scope, api, acco
         console.log(message);
 
         $scope.conversations.forEach(function(o, i) {
-            o.messages.push({
-                userID: -1,
-                content: message.data,
-                timestamp: new Date().getTime(),
-                conversationID: -1
-            });
+            if(o.conversation_id*1 === message.data.conversation_id) {
+                o.messages.push(message.data);
+            }
             $scope.$apply();
         });
 
