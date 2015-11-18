@@ -5,7 +5,7 @@
             {{conv.conversation.topic}}
         </div>
         <div class="chat--window" ng-show="conv.visible">
-            <div class="chat--messages">
+            <div class="chat--messages" scroll-glue>
                 <div class="chat--message" ng-repeat="message in conv.messages">
                     {{message.content}}
                 </div>

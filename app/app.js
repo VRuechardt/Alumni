@@ -26,7 +26,8 @@ angular.module('alumni', [
         'alumni.users',
         'alumni.user',
         'alumni.chat',
-        'scDateTime'
+        'scDateTime',
+        'luegg.directives'
     ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
