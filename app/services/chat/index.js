@@ -8,7 +8,7 @@ module.exports = ['$http', '$location', function($http, $location) {
         websocket: undefined,
         connect: function(authcode) {
 
-            chatService.websocket = new WebSocket('ws:\\\\127.0.0.1:9001');
+            chatService.websocket = new WebSocket('ws:\\\\192.168.178.93:9001');
             chatService.websocket.onopen = function(){
                 var send = {"task": 'auth', "code": authcode};
                 chatService.websocket.send(JSON.stringify(send));
